@@ -73,7 +73,8 @@ FunctionsToExport = 'Get-MyAADAccessToken', 'Get-MyAADDirectorySetting',
                'Get-MyAADDirectorySettingTemplate', 'Get-MyAADGroupSetting', 
                'Get-MyAADSecurityAlerts', 'Get-MyAADUnifiedGroups', 
                'New-MyAADDirectorySetting', 'New-MyAADGroupSetting', 
-               'Remove-MyAADGroupSetting', 'Set-MyAADGroupGuestAccess'
+               'Remove-MyAADGroupSetting', 'Set-MyAADGroupGuestAccess', 
+               'Update-MyAADSecurityAlert'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
