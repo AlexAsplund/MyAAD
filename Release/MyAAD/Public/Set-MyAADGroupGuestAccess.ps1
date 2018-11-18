@@ -26,9 +26,12 @@ Function Set-MyAADGroupGuestAccess {
         [validateset('false','true')]
         [string]$AllowToAddGuests,
 
+        # Will remove ALL previous settings on objects.
+        [switch]$Force,
+
         # Graph Access token
         [parameter(Mandatory)]
-        [string]$AccessToken 
+        [string]$AccessToken
     )
     Begin{
         $Settings = [PSCustomObject]@{
@@ -38,8 +41,13 @@ Function Set-MyAADGroupGuestAccess {
         }
     }
     Process{
-        $Template = Get-RVAADDirectorySettingTemplate -AccessToken $AccessToken | ? {$_.DisplayName -eq 'Group.Unified.Guest'}
-        New-RVAADGroupSetting -TemplateId $Template.id -Values $Settings -AccessToken $AccessToken -GroupId $Id
+        $Template = Get-MyAADDirectorySettingTemplate -AccessToken $AccessToken | ? {$_.DisplayName -eq 'Group.Unified.Guest'}
+        if($Force){
+            (Get-MyAADGroupSetting -Id $Id -AccessToken $AccessToken).Value.Id | foreach {
+                Remove-MyAADGroupSetting -Id $Id -SettingsId $_.Id
+            }
+        }
+        New-MyAADGroupSetting -TemplateId $Template.id -Values $Settings -AccessToken $AccessToken -GroupId $Id
     }
     End{
 

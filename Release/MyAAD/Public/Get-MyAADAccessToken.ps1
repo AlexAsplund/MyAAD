@@ -20,7 +20,7 @@ Function Get-MyAADAccessToken {
         [parameter(Mandatory)]
         [string]$TenantName
     )
-    
+    Add-Type -AssemblyName System.Web
     # Decode securestring
     $SecureString = [System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($ClientCredential.password)
     $Password = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($SecureString)

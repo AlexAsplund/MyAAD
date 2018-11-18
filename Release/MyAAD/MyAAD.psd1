@@ -71,9 +71,9 @@ Description = 'A collection of simple functions for Microsoft Graph API'
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-MyAADAccessToken', 'Get-MyAADDirectorySetting', 
                'Get-MyAADDirectorySettingTemplate', 'Get-MyAADGroupSetting', 
-               'Get-MyAADUnifiedGroups', 'New-MyAADDirectorySetting', 
-               'New-MyAADGroupSetting', 'Remove-MyAADGroupSetting', 
-               'Set-MyAADGroupGuestAccess'
+               'Get-MyAADSecurityAlerts', 'Get-MyAADUnifiedGroups', 
+               'New-MyAADDirectorySetting', 'New-MyAADGroupSetting', 
+               'Remove-MyAADGroupSetting', 'Set-MyAADGroupGuestAccess'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

@@ -59,9 +59,4 @@ Function New-MyAADGroupSetting {
     End{
 
     }
-    
-    
-    
 }
-
-
