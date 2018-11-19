@@ -258,3 +258,18 @@ Task BeforePublish {
 # Executes after the Publish task.
 Task AfterPublish {
 }
+
+################################################################################
+# After Generate Markdown
+################################################################################
+Task AfterGenerateMarkdown {
+
+    . $PSScriptRoot\buildhelpindex.ps1
+    $ReadMe = cat  $PSScriptRoot\README.md
+    $Functions = cat $PSScriptRoot\docs\MyAAD.md
+    
+    $Part1 = $ReadMe[0..($ReadMe.IndexOf('## Functions')+1)]
+    $Part2 = $Functions | select -Skip 4
+
+    ($Part1+$Part2) | Out-File -FilePath $PSScriptRoot\README.md
+}
