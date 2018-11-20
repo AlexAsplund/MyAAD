@@ -63,6 +63,14 @@ Function Update-MyAADSecurityAlert {
             
             $Object | Add-Member -MemberType NoteProperty -Name $Name -Value $Value
         }
+
+        $VendorInfo = [PSCustomObject]@{
+            provider = 'RVSecurityManager'
+            vendor = 'RV'
+        }
+
+        $Object | Add-Member -MemberType NoteProperty -Name vendorInformation -Value $VendorInfo
+
         $Uri = "https://graph.microsoft.com/beta/security/alerts/$Id"
         Write-verbose $Uri
         Invoke-WebRequest -Method Patch -Uri $Uri -Headers $Header -Body ($Object | ConvertTo-Json) -ContentType 'application/json'
